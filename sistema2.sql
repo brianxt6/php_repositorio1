@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-04-2025 a las 16:33:07
+-- Tiempo de generación: 21-04-2025 a las 18:55:52
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.1.25
 
@@ -48,10 +48,8 @@ CREATE TABLE `resumen_solicitud` (
 --
 
 INSERT INTO `resumen_solicitud` (`id_solicitud`, `usuario_id`, `titulo`, `fecha`, `nota_usuario`, `nota_jefe`, `estado_jefe`, `nota_sistemas`, `estado_sistemas`, `aprobacion`, `asesor`, `nombre_usuario`, `evaluador`) VALUES
-(16, 23, 'Permisos celular\r\ncelular: Brian', '17/04/2025 00:17:33', 'Permisos', 'Rechazado por que no hay celulares', 'Rechazado', 'Pendiente Sistemas', 'Pendiente', 'Pendiente', '26', 'Brian Acevedo', '27'),
-(17, 23, 'Permisos Pimovi\r\nusuario: brian.acevedo', '17/04/2025 09:03:25', 'Ruta pimovi/pedidos/autorizados', 'Aprobado solo ruta de pedidos', 'Aprobado', 'Pendiente Sistemas', 'Pendiente', 'Pendiente', '26', 'Brian Acevedo', '27'),
-(18, 23, 'Pagina tropi\r\nbrian.acevedo', '17/04/2025 21:59:04', 'Facturas/Cuentas/Clientes', 'Pendiente Jefe', 'Pendiente', 'Pendiente Sistemas', 'Pendiente', 'Pendiente', NULL, 'Brian Acevedo', NULL),
-(19, 23, 'Permisos pagina tropi\r\nusuario:Brian Acevedo', '17/04/2025 22:47:26', 'Facturas/Pedidos/Ordenes 10:47PM\r\n', 'Pendiente Jefe', 'Pendiente', 'Pendiente Sistemas', 'Pendiente', 'Pendiente', NULL, 'Brian Acevedo', NULL);
+(22, 23, 'Permisos siesa\r\nusuario:brian.acevedo', '21/04/2025 11:45:42', 'Ruta: pimovi/pedidos/permisos', 'Aprobado por Cartera', 'Aprobado', 'Permiso otorgado', 'Aprobado', 'Pendiente', '23', 'Brian Acevedo', '27'),
+(23, 23, 'Permiso Pagina tropi\r\nusuario: brian.acevedo', '21/04/2025 11:48:20', 'Ruta pedidos/tropi/descuentos', 'Permiso solo para gerencia', 'Rechazado', 'Rechazado por Gerencia', 'Rechazado', 'Pendiente', '23', 'Brian Acevedo', '27');
 
 -- --------------------------------------------------------
 
@@ -149,7 +147,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `resumen_solicitud`
 --
 ALTER TABLE `resumen_solicitud`
-  MODIFY `id_solicitud` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_solicitud` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de la tabla `trabajo_grado`
