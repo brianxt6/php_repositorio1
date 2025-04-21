@@ -14,7 +14,8 @@ try {
     $pdo = new PDO('mysql:host=' . $direccionservidor . '; dbname=' . $baseDatos, $usuarioBD, $contraseniaBD);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $sql = "SELECT id_trabajo, titulo, autor1, autor2, asesor, evaluador, fecha_trabajo, archivo, estado_evaluador, conclusion_evaluador FROM trabajo_grado";
+    $sql = "SELECT id_solicitud, titulo, fecha, nombre_usuario, nota_usuario, estado_jefe, nota_jefe, estado_sistemas, nota_sistemas, aprobacion FROM resumen_solicitud";
+
     $stmt = $pdo->query($sql);
     $trabajos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -39,6 +40,13 @@ try {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
+<style>
+    .my-textarea {
+  height: 100px;
+}
+</style>
+
 </head>
 <body>
 <header>
@@ -74,57 +82,109 @@ try {
 </div>
 
 <div class="container mt-5">
-
-
-
+    <h3>Solicitudes Creadas</h3>
     <div class="table-responsive mt-2">
         <table class="table table-primary">
             <thead>
                 <tr>
-                    <th scope="col">ID Solicitud</th>
-                    <th scope="col">Fecha</th>
-                    <th scope="col">Nombre usuario</th>
-                    <th scope="col">Titulo</th>
-                    <th scope="col">Detalles</th>
-                    <th scope="col">Estado</th>
-                    <th scope="col">Nota Jefe</th>
-                    <th scope="col">Actualizar</th>
+                    <th>ID Trabajo</th>
+                    <th>Fecha</th>
+                    <th>Título</th>
+                    <th>Nota[Usuario]</th>
+                    <th>Estado[Jefe]</th>
+                    <th>Nota[Jefe]</th>
+                    <th>Estado[Sistemas]</th>
+                    <th>Nota[Sistemas]</th>
+                    <th>Aprobacion</th>
+                    <th>Actualizar</th>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($trabajos as $trabajo): ?>
-                    <tr>
-                        <form method="POST" action="actualizar_estado_asesorV2.php">
-                            <td><?= htmlspecialchars($trabajo['id_solicitud']) ?></td>
-                            <td><?= htmlspecialchars($trabajo['fecha']) ?></td>
-                            <td><?= htmlspecialchars($trabajo['nombre_usuario']) ?></td>
-                            <td><?= htmlspecialchars($trabajo['titulo']) ?></td>
-                            <td><?= htmlspecialchars($trabajo['nota_usuario']) ?></td>
-                            <?php $deshabilitar = ($trabajo['estado_jefe'] != 'Pendiente') ? 'disabled' : ''; ?>
+            <?php if (empty($trabajos)): ?>
+    <tr>
+        <td colspan="10">No tienes trabajos registrados.</td>
+    </tr>
+<?php else: ?>
+    <?php foreach ($trabajos as $trabajo): ?>
+        
+        <tr>
+            <td><?= htmlspecialchars($trabajo['id_solicitud']) ?></td>
+            <td><?= htmlspecialchars($trabajo['fecha']) ?></td>
+            <td><?= htmlspecialchars($trabajo['titulo']) ?></td>
+            <td><?= htmlspecialchars($trabajo['nota_usuario']) ?></td>
+
+            
+            
+            <?php
+        // Lógica para estado_jefe
+        $estadoJefe = $trabajo['estado_jefe'] ?: 'No asignado';
+        switch ($estadoJefe) {
+            case 'Aprobado':
+                $claseBtnJefe = 'btn-success';
+                break;
+            case 'Rechazado':
+                $claseBtnJefe = 'btn-danger';
+                break;
+            default:
+                $claseBtnJefe = 'btn-info';
+                break;
+        }
+
+        // Lógica para estado_sistemas
+        $estadoSistemas = $trabajo['estado_sistemas'] ?: 'No asignado';
+        switch ($estadoSistemas) {
+            case 'Aprobado':
+                $claseBtnSistemas = 'btn-success';
+                break;
+            case 'Rechazado':
+                $claseBtnSistemas = 'btn-danger';
+                break;
+            default:
+                $claseBtnSistemas = 'btn-info';
+                break;
+        }
+        ?>
+
+
+            <td><button class="btn  <?= $claseBtnJefe ?>"><?= htmlspecialchars($trabajo['estado_jefe'] ?: 'No asignado') ?></button>
+            </td>
+
+
+            <td><?= htmlspecialchars($trabajo['nota_jefe'] ?: 'No asignado') ?>
+
+            <form method="POST" action="actualizar_estado_evaluadorV2.php">
+
+        </td>
+        <?php $deshabilitar = ($trabajo['estado_sistemas'] != 'Pendiente') ? 'disabled' : ''; ?>
                             <td>
-                                 <select name="estado_jefe" class="form-select" <?= $deshabilitar ?>
-                                    <option value="Pendiente" <?= ($trabajo['estado_jefe'] == 'Pendiente') ? 'selected' : '' ?>>Pendiente</option>
-                                    <option value="Aprobado" <?= ($trabajo['estado_jefe'] == 'Aprobado') ? 'selected' : '' ?>>Aprobado</option>
-                                    <option value="Rechazado" <?= ($trabajo['estado_jefe'] == 'Rechazado') ? 'selected' : '' ?>>Rechazado</option>
+                                 <select name="estado_sistemas" class="form-select" <?= $deshabilitar ?>
+                                    <option value="Pendiente" <?= ($trabajo['estado_sistemas'] == 'Pendiente') ? 'selected' : '' ?>>Pendiente</option>
+                                    <option value="Aprobado" <?= ($trabajo['estado_sistemas'] == 'Aprobado') ? 'selected' : '' ?>>Aprobado</option>
+                                    <option value="Rechazado" <?= ($trabajo['estado_sistemas'] == 'Rechazado') ? 'selected' : '' ?>>Rechazado</option>
                                 </select>
                             </td>
                             <td>
-                            <textarea required name="nota_jefe" id="nota_jefe" <?= $deshabilitar ?>><?= htmlspecialchars($trabajo['nota_jefe']) ?></textarea>
-                            </td>
-                            <td>
+    <textarea class="my-textarea"
+        name="nota_sistemas" 
+        id="nota_sistemas" 
+        class="form-control"
+        <?= $trabajo['nota_sistemas'] !== 'Pendiente Sistemas' ? 'disabled' : '' ?>
+    ><?= htmlspecialchars($trabajo['nota_sistemas']) ?></textarea>
+</td>
+            <td><?= htmlspecialchars($trabajo['aprobacion']) ?></td>
+            <td>
                                 <input type="hidden" name="id_solicitud" value="<?= htmlspecialchars($trabajo['id_solicitud']) ?>">
                                 <button type="submit" class="btn btn-success">Actualizar</button>
                             </td>
-                        </form>
-                    </tr>
-                <?php endforeach; ?>
+        </tr>
+        
+        </form>
+    <?php endforeach; ?>
+<?php endif; ?>
             </tbody>
         </table>
     </div>
-
-
-
-
+                 
 
 </div>
 

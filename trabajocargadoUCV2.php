@@ -70,7 +70,7 @@ try {
     <h2>Bienvenido usuario: <?= htmlspecialchars($_SESSION['usuario_nombres']); ?></h2>
     <p>Esta sección permite el realizar solicitudes de permisos a las diferentes plataformas</p>
     <p>Su perfil es: <button class="btn btn-primary">Usuario Tropi</button></p>
-    <a href="agregartesisUCV2.php" class="btn btn-info">Realizar Solictud</a>
+    <a href="agregartesisUCV2.php" class="btn btn-info">Realizar Solicitud</a>
     <br>
 
 </div>

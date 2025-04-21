@@ -124,7 +124,7 @@ footer{
             </div>
 
             <div class="text">
-                <a class="btn btn-primary" href="trabajocargadoUCV2.php" required>Volver pagina anterior</a>
+                <a class="btn btn-info" href="trabajocargadoUCV2.php" required>Volver pagina anterior</a>
                 <a href=""></a>
                 <button type="submit" class="btn btn-primary">Enviar Formulario</button>
             </div>

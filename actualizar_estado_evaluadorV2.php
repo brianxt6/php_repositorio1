@@ -4,28 +4,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Obtener los datos del formulario
     $id_solicitud = $_POST['id_solicitud'];
-    $estado_jefe = $_POST['estado_jefe'];
-    $nota_jefe = $_POST['nota_jefe'];
+    $estado_sistemas = $_POST['estado_sistemas'];
+    $nota_sistemas = $_POST['nota_sistemas'];
 
     try {
         // Conexión a la base de datos
         $pdo = new PDO('mysql:host=' . $direccionservidor . '; dbname=' . $baseDatos, $usuarioBD, $contraseniaBD);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        // Consulta para actualizar el estado y la conclusión del asesor
-        $sql = "UPDATE resumen_solicitud SET estado_jefe = :estado_jefe, nota_jefe = :nota_jefe WHERE id_solicitud = :id_solicitud";
+        $sql = "UPDATE resumen_solicitud SET estado_sistemas = :estado_sistemas, nota_sistemas = :nota_sistemas WHERE id_solicitud = :id_solicitud";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
-            ':estado_jefe' => $estado_jefe,
-            ':nota_jefe' => $nota_jefe,
+            ':estado_sistemas' => $estado_sistemas,
+            ':nota_sistemas' => $nota_sistemas,
             ':id_solicitud' => $id_solicitud
         ]);
 
         // Mostrar mensaje de éxito y redirigir
-        echo "<script>alert('Permiso actualizado exitosamente'); window.location.href = 'asesorUCV2.php';</script>";
-        
-
-        
+        echo "<script>alert('Permiso actualizado exitosamente'); window.location.href = 'evaluadorUCV2.php';</script>";
     } catch (PDOException $e) {
         // Si ocurre un error, mostrar mensaje
         echo "Error: " . $e->getMessage();

@@ -19,6 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     date_default_timezone_set('America/Bogota');
     $fecha_actual = date('d/m/Y H:i:s'); 
     
+    
     try {
         $pdo = new PDO('mysql:host=' . $direccionservidor . '; dbname=' . $baseDatos, $usuarioBD, $contraseniaBD);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -38,9 +39,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Inserción a la tabla resumen_solicitud, incluyendo nombre_usuario
         $sql = "INSERT INTO `resumen_solicitud` 
             (`usuario_id`, `nombre_usuario`, `titulo`, `fecha`, `nota_usuario`, `nota_jefe`,
-             `estado_jefe`, `nota_sistemas`, `estado_sistemas`, `aprobacion`)
+             `estado_jefe`, `nota_sistemas`, `estado_sistemas`, `aprobacion`, `asesor`, `evaluador`)
              VALUES (:usuario_id, :nombre_usuario, :titulo, :fecha_actual, :nota_usuario, 'Pendiente Jefe',
-             'Pendiente', 'Pendiente Sistemas', 'Pendiente', 'Pendiente')";
+             'Pendiente', 'Pendiente Sistemas', 'Pendiente', 'Pendiente', '23','27')";
     
         $stmt = $pdo->prepare($sql);
         $stmt->execute([

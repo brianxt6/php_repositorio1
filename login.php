@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         break;
 
                     case 4:
-                        header("Location: evaluadorUC.php");
+                        header("Location: evaluadorUCV2.php");
                         break;
                     
                     case 5:
