@@ -111,7 +111,13 @@ try {
                                 </select>
                             </td>
                             <td>
-                            </td>
+    <textarea 
+        name="nota_jefe" 
+        id="nota_jefe" 
+        class="form-control"
+        <?= $trabajo['nota_jefe'] !== 'Pendiente Jefe' ? 'disabled' : '' ?>
+    ><?= htmlspecialchars($trabajo['nota_jefe']) ?></textarea>
+</td>
                             <td>
                                 <input type="hidden" name="id_solicitud" value="<?= htmlspecialchars($trabajo['id_solicitud']) ?>">
                                 <button type="submit" class="btn btn-success">Actualizar</button>
