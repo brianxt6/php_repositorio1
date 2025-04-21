@@ -1,0 +1,68 @@
+.container-1{
+    display: grid;
+    height: 120vh;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.2fr 0.5fr 1fr 0.1fr;
+    grid-template-areas: 
+    "nav"
+    "main"
+    "cards"
+    "footer";
+    text-align: center;
+    color: black;
+    font-weight: 800;
+}
+
+body {
+    background-image: url('./img/fondo.jpg');
+    background-size: cover;
+    position: relative;
+}
+
+nav{
+    grid-area: nav;
+}
+
+main{
+    grid-area: main;
+}
+
+#cards{
+    grid-area: cards;
+ 
+}
+
+footer{
+    grid-area: footer;
+}
+
+.footer {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .footer h3 {
+    color: #fff;
+  }
+
+  
+  .footer ul {
+    padding: 0;
+  }
+  
+  .footer ul li {
+    list-style-type: none;
+  }
+  
+  .footer ul li a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .footer ul li a:hover {
+    text-decoration: underline;
+  }
+  
+  main h2{
+    color: white;
+}
