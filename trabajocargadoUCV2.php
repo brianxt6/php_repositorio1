@@ -25,6 +25,7 @@ try {
         rs.estado_jefe, 
         rs.nota_sistemas, 
         rs.estado_sistemas, 
+        rs.hora_solucion,
         rs.aprobacion
     FROM 
         resumen_solicitud rs
@@ -89,7 +90,7 @@ try {
                     <th>Nota[Jefe]</th>
                     <th>Estado[Sistemas]</th>
                     <th>Nota[Sistemas]</th>
-                    <th>Aprobacion</th>
+                    <th>Hora Solucion</th>
                 </tr>
             </thead>
             <tbody>
@@ -142,7 +143,7 @@ try {
             <td><?= htmlspecialchars($trabajo['nota_jefe'] ?: 'No asignado') ?></td>
             <td><button class="btn <?= $claseBtnSistemas ?>"><?= htmlspecialchars($trabajo['estado_sistemas'] ?: 'No asignado') ?></button></td>
             <td><?= htmlspecialchars($trabajo['nota_sistemas'] ?: 'No asignado') ?></td>
-            <td><?= htmlspecialchars($trabajo['aprobacion']) ?></td>
+            <td><?= htmlspecialchars($trabajo['hora_solucion']) ?></td>
         </tr>
     <?php endforeach; ?>
 <?php endif; ?>

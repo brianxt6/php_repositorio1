@@ -14,7 +14,7 @@ try {
     $pdo = new PDO('mysql:host=' . $direccionservidor . '; dbname=' . $baseDatos, $usuarioBD, $contraseniaBD);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $sql = "SELECT id_solicitud, titulo, fecha, nombre_usuario, nota_usuario, estado_jefe, nota_jefe, estado_sistemas, nota_sistemas, aprobacion FROM resumen_solicitud";
+    $sql = "SELECT id_solicitud, titulo, fecha, nombre_usuario, nota_usuario, estado_jefe, nota_jefe, estado_sistemas, nota_sistemas, aprobacion, hora_solucion FROM resumen_solicitud";
 
     $stmt = $pdo->query($sql);
     $trabajos = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -95,8 +95,8 @@ try {
                     <th>Nota[Jefe]</th>
                     <th>Estado[Sistemas]</th>
                     <th>Nota[Sistemas]</th>
-                    <th>Aprobacion</th>
                     <th>Actualizar</th>
+                    <th>Hora Solucion</th>
                 </tr>
             </thead>
             <tbody>
@@ -171,12 +171,12 @@ try {
         <?= $trabajo['nota_sistemas'] !== 'Pendiente Sistemas' ? 'disabled' : '' ?>
     ><?= htmlspecialchars($trabajo['nota_sistemas']) ?></textarea>
 </td>
-            <td><?= htmlspecialchars($trabajo['aprobacion']) ?></td>
-            <td>
-                                <input type="hidden" name="id_solicitud" value="<?= htmlspecialchars($trabajo['id_solicitud']) ?>">
-                                <button type="submit" class="btn btn-success">Actualizar</button>
-                            </td>
-        </tr>
+<td>
+    <input type="hidden" name="id_solicitud" value="<?= htmlspecialchars($trabajo['id_solicitud']) ?>">
+    <button type="submit" class="btn btn-success">Actualizar</button>
+</td>
+<td><?= htmlspecialchars($trabajo['hora_solucion']) ?></td>
+</tr>
         
         </form>
     <?php endforeach; ?>

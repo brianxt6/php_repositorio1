@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-04-2025 a las 18:55:52
+-- Tiempo de generación: 22-04-2025 a las 04:43:40
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.1.25
 
@@ -40,16 +40,17 @@ CREATE TABLE `resumen_solicitud` (
   `aprobacion` varchar(250) NOT NULL,
   `asesor` varchar(100) DEFAULT NULL,
   `nombre_usuario` varchar(100) DEFAULT NULL,
-  `evaluador` varchar(255) DEFAULT NULL
+  `evaluador` varchar(255) DEFAULT NULL,
+  `hora_solucion` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `resumen_solicitud`
 --
 
-INSERT INTO `resumen_solicitud` (`id_solicitud`, `usuario_id`, `titulo`, `fecha`, `nota_usuario`, `nota_jefe`, `estado_jefe`, `nota_sistemas`, `estado_sistemas`, `aprobacion`, `asesor`, `nombre_usuario`, `evaluador`) VALUES
-(22, 23, 'Permisos siesa\r\nusuario:brian.acevedo', '21/04/2025 11:45:42', 'Ruta: pimovi/pedidos/permisos', 'Aprobado por Cartera', 'Aprobado', 'Permiso otorgado', 'Aprobado', 'Pendiente', '23', 'Brian Acevedo', '27'),
-(23, 23, 'Permiso Pagina tropi\r\nusuario: brian.acevedo', '21/04/2025 11:48:20', 'Ruta pedidos/tropi/descuentos', 'Permiso solo para gerencia', 'Rechazado', 'Rechazado por Gerencia', 'Rechazado', 'Pendiente', '23', 'Brian Acevedo', '27');
+INSERT INTO `resumen_solicitud` (`id_solicitud`, `usuario_id`, `titulo`, `fecha`, `nota_usuario`, `nota_jefe`, `estado_jefe`, `nota_sistemas`, `estado_sistemas`, `aprobacion`, `asesor`, `nombre_usuario`, `evaluador`, `hora_solucion`) VALUES
+(25, 23, 'Permiso pagina Tropi\r\nusuarrio: brian.acevedo', '21/04/2025 09:38:38 PM', 'Ruta permisos/facturacion/escritura', 'Aprobado por cartera', 'Aprobado', 'Permisos asignados', 'Aprobado', 'Pendiente', '23', 'Brian Acevedo', '27', '21/04/2025 09:39:47 PM'),
+(26, 23, 'Permiso pimovi\r\nusuario: steven.ramirez', '21/04/2025 09:41:18 PM', 'Ruta pedidos/compras/aprobacion', 'Permisos solo para gerentes', 'Rechazado', 'Permisos solo para gerentes', 'Rechazado', 'Pendiente', '23', 'Brian Acevedo', '27', '21/04/2025 09:42:35 PM');
 
 -- --------------------------------------------------------
 
@@ -147,7 +148,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `resumen_solicitud`
 --
 ALTER TABLE `resumen_solicitud`
-  MODIFY `id_solicitud` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_solicitud` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT de la tabla `trabajo_grado`

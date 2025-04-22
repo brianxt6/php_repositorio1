@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $usuario_id = $_SESSION['usuario_id']; // Obtiene el ID del usuario actual
     
     date_default_timezone_set('America/Bogota');
-    $fecha_actual = date('d/m/Y H:i:s'); 
+    $fecha_actual = date('d/m/Y h:i:s A');
     
     
     try {
