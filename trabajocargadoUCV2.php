@@ -96,7 +96,7 @@ try {
             <tbody>
             <?php if (empty($trabajos)): ?>
     <tr>
-        <td colspan="10">No tienes trabajos registrados.</td>
+        <td colspan="10">No tienes solicitudes creadas.</td>
     </tr>
 <?php else: ?>
     <?php foreach ($trabajos as $trabajo): ?>
