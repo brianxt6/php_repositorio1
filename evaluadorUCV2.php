@@ -42,10 +42,23 @@ try {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
 <style>
+    body {
+      background: linear-gradient(to right, #4e54c8, #8f94fb);
+    }
+
+    .card-login {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      width: 100%;
+    }
+
     .my-textarea {
   height: 100px;
 }
-</style>
+      </style>
+
 
 </head>
 <body>
@@ -54,25 +67,37 @@ try {
 </header>
 <main>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-    <a href="https://xolit.com/en/rocking-your-business/">
-    <img src="./img/logo-1.png" alt="logo" style="height:25px;">
-    </a>
-        <div class="collapse navbar-collapse" id="collapsibleNavId">
-            <ul class="navbar-nav me-auto mt-2 mt-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" href="cerrar.php">Cerrar</a>
-                </li>
-            </ul>
-        </div>
-    </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light px-3">
+  <a href="https://xolit.com/en/rocking-your-business/" class="navbar-brand">
+    <img src="./img/logo-1.png" alt="logo" style="height: 25px;">
+  </a>
+
+  <!-- Botón colapsable para móviles -->
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Menú colapsable -->
+  <div class="collapse navbar-collapse" id="collapsibleNavId">
+    <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+      <!-- Aquí puedes agregar más elementos del menú -->
+    </ul>
+
+    <!-- Botón cerrar (siempre visible) -->
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item">
+        <a class="nav-link active text-danger fw-bold" href="cerrar.php">
+          <i class="fas fa-sign-out-alt"></i> Cerrar
+        </a>
+      </li>
+    </ul>
+  </div>
 </nav>
 
 <br/>
 
 <div class="container">
-    <div class="row justify-content-center align-items-center">
+    <div class="card-login lign-items-center">
         <div class="col">
             <h2>Bienvenido: <?php echo $_SESSION['usuario_nombres']; ?></h2>
             <p>Esta sección permite el aprobar los trabajos de grado del trabajo de grado</p>
@@ -81,10 +106,10 @@ try {
     </div>
 </div>
 
-<div class="container mt-5">
+<div class="card-login container mt-5">
     <h3>Solicitudes Creadas</h3>
     <div class="table-responsive mt-2">
-        <table class="table table-primary">
+        <table class="table">
             <thead>
                 <tr>
                     <th>ID Trabajo</th>
