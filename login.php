@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         if ($hasTrabajo > 0) {
                             header("Location: trabajocargadoUCV2.php");
                         } else {
-                            header("Location: index.php");
+                            header("Location: trabajocargadoUCV2.php");
                         }
                         break;
 

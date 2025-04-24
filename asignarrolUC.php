@@ -38,10 +38,9 @@ if(!isset($_SESSION['usuario_id'])){
                     <div class="col-md-6">
                         <label for="rol" class="form-label">Rol</label>
                         <select class="form-select" id="rol">
-                            <option value="1">Estudiante</option>
-                            <option value="2">Comité</option>
-                            <option value="3">Asesor</option>
-                            <option value="4">Evaluador</option>
+                            <option value="1">Usuario</option>
+                            <option value="3">Jefe</option>
+                            <option value="4">Sistemas</option>
                         </select>
                     </div>
                 </div>
