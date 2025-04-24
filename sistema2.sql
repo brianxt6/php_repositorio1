@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-04-2025 a las 07:41:17
+-- Tiempo de generación: 24-04-2025 a las 03:47:10
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.1.25
 
@@ -53,7 +53,8 @@ INSERT INTO `resumen_solicitud` (`id_solicitud`, `usuario_id`, `titulo`, `fecha`
 (26, 23, 'Permiso pimovi\r\nusuario: steven.ramirez', '21/04/2025 09:41:18 PM', 'Ruta pedidos/compras/aprobacion', 'Permisos solo para gerentes', 'Rechazado', 'Permisos solo para gerentes', 'Rechazado', 'Pendiente', '23', 'Brian Acevedo', '27', '21/04/2025 09:42:35 PM'),
 (27, 23, 'permisos siesa\r\nusuario: steven.ramirez', '21/04/2025 10:33:03 PM', 'ruta: pedidos/cancelados', 'Aprobado por gerencia', 'Aprobado', 'Sistemas 003', 'Aprobado', 'Pendiente', '23', 'Brian Acevedo', '27', '21/04/2025 11:13:35 PM'),
 (28, 24, 'Permisos siesa\r\nusuario: steven.ramirez', '21/04/2025 11:30:15 PM', 'Ruta: pedidos/cancelados', 'Aprobado por logistica', 'Aprobado', 'Permisos asignados', 'Aprobado', 'Pendiente', '23', 'Steven Ramirez', '27', '21/04/2025 11:31:28 PM'),
-(29, 23, 'Plataforma Pimovi\r\nusuario brian.acevedo', '22/04/2025 12:32:15 AM', 'Ruta: pedidos/productos/Autorizacion', 'Aprobado por Logistica', 'Aprobado', 'Solucionado', 'Aprobado', 'Pendiente', '23', 'Brian Acevedo', '27', '22/04/2025 12:33:16 AM');
+(29, 23, 'Plataforma Pimovi\r\nusuario brian.acevedo', '22/04/2025 12:32:15 AM', 'Ruta: pedidos/productos/Autorizacion', 'Aprobado por Logistica', 'Aprobado', 'Solucionado', 'Aprobado', 'Pendiente', '23', 'Brian Acevedo', '27', '22/04/2025 12:33:16 AM'),
+(30, 23, 'Plataforma pimovi\r\nusuario: brian.martin', '23/04/2025 08:10:18 PM', 'Ruta pedidos/cancelados', 'Aprobado 001', 'Aprobado', 'Pendiente Sistemas', 'Pendiente', 'Pendiente', '23', 'Brian Acevedo', '27', NULL);
 
 -- --------------------------------------------------------
 
@@ -118,8 +119,8 @@ INSERT INTO `usuarios` (`id`, `nombres`, `apellidos`, `email`, `password`, `rol`
 (25, 'Steven', 'Ramirez', 'comite@uc.edu.co', '$2y$10$nBC6T5eU92RVVeg4sF5Kt.ziJt2czIIaYiWVBPCleX8AwiircWdA6', '2'),
 (26, 'Dorian', 'Trujillo', 'jefe@grupotropi.com', '$2y$10$A4erWRvI8mJwtCb4XgVpoO/4iqifeerm6mJWAKWeC42s6a7FIx1H6', '3'),
 (27, 'Juan', 'Beltran', 'sistemas@grupotropi.com', '$2y$10$HRbjLC2cjHfw/AtfrEfZ5OayZtUuNOQRRQpbGvtR5b/.YtiCBzgiy', '4'),
-(28, 'Martin', 'Mendez', 'estudiante3@uc.edu.co', '$2y$10$v2AdVhzWXnnj5khqsJRy/e7n3Cjst7l7vGkWdJ7/d6d9CyoefbJ/e', '1'),
-(30, 'Albeiro', 'Ortiz', 'admin@uc.edu.co', '$2y$10$plTR4N68.5n0N7ui9CtWtOnWASi2CmpmlY7GB4W3JjV6UpFeeClZm', '5');
+(30, 'Albeiro', 'Ortiz', 'admin@grupotropi.com', '$2y$10$plTR4N68.5n0N7ui9CtWtOnWASi2CmpmlY7GB4W3JjV6UpFeeClZm', '5'),
+(31, 'Pedro', 'Perez', 'pedro@gmail.com', '$2y$10$LVRmLnSjpntx5SuiOAVL3eU954YYFIxKErAymynPH2wBl4iTq4goG', '4');
 
 --
 -- Índices para tablas volcadas
@@ -151,7 +152,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `resumen_solicitud`
 --
 ALTER TABLE `resumen_solicitud`
-  MODIFY `id_solicitud` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id_solicitud` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de la tabla `trabajo_grado`
@@ -163,7 +164,7 @@ ALTER TABLE `trabajo_grado`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
