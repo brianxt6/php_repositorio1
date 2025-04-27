@@ -15,22 +15,84 @@ if(!isset($_SESSION['usuario_id'])){
     <title>Registro</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <style>
+    body {
+      background: linear-gradient(to right, #4e54c8, #8f94fb);
+    }
+
+    .card{
+      padding: 15px;
+      border-radius: 16px;
+    }
+
+
+
+      </style>
+
 </head>
 <body>
+
+<header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light px-3">
+  <a href="https://xolit.com/en/rocking-your-business/" class="navbar-brand">
+    <img src="./img/logo-1.png" alt="logo" style="height: 25px;">
+  </a>
+
+  <!-- Botón colapsable para móviles -->
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Menú colapsable -->
+  <div class="collapse navbar-collapse" id="collapsibleNavId">
+    <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+      <!-- Aquí puedes agregar más elementos del menú -->
+    </ul>
+
+    <!-- Botón cerrar (siempre visible) -->
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item">
+        <a class="nav-link active text-danger fw-bold" href="cerrar.php">
+          <i class="fas fa-sign-out-alt"></i> Cerrar
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </header>
+
 <div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col md-8 col-lg-8">
     <div class="card">
-        <div class="card-header">
-            <h5 class="mb-0">Registro</h5>
-        </div>
-        <div class="card-body">
+            <div class="card-body">
+            <h2>Asignación de roles</h2>
+            <br>
             <form id="buscarForm">
                 <!-- Buscar Correo -->
                 <div class="mb-3">
-                    <label for="buscarCorreo" class="form-label">Buscar Correo</label>
-                    <input type="text" class="form-control" id="buscarCorreo" placeholder="Ingrese el correo">
+                    <label for="buscarCorreo" class="form-label">Buscar Cedula</label>
+                    <input type="text" class="form-control" id="buscarCorreo">
                 </div>
+
+                <hr class="my-4">
                 <!-- Correo Encontrado y Rol -->
-                <div class="row g-3">
+
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <label for="correoEncontrado" class="form-label">Nombre encontrado</label>
+                        <input type="text" class="form-control" id="correoEncontrado" placeholder="Nombre encontrado" readonly>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="correoEncontrado" class="form-label">Cedula encontrada</label>
+                        <input type="text" class="form-control" id="correoEncontrado" placeholder="Cedula encontrada" readonly>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
                     <div class="col-md-6">
                         <label for="correoEncontrado" class="form-label">Correo encontrado</label>
                         <input type="text" class="form-control" id="correoEncontrado" placeholder="Correo encontrado" readonly>
@@ -44,6 +106,7 @@ if(!isset($_SESSION['usuario_id'])){
                         </select>
                     </div>
                 </div>
+
                 <!-- Botones -->
                 <div class="mt-4">
                     <button type="button" class="btn btn-warning me-2" id="btnBuscar">Buscar</button>
@@ -52,6 +115,8 @@ if(!isset($_SESSION['usuario_id'])){
                 </div>
             </form>
         </div>
+    </div>
+    </div>
     </div>
 </div>
 
