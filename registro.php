@@ -52,18 +52,7 @@
              $existeEmail = $stmtCheckEmail->fetchColumn();
      
              if ($existeEmail > 0) {
-                 echo "
-                 <div class=\"container mt-5\">
-                     <div class=\"row justify-content-center\">
-                         <div class=\"col md-8 col-lg-8\">
-                             <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">
-                                 <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button>
-                                 <strong>Error en el registro: </strong>El correo ya se encuentra registrado
-                             </div>
-                         </div>
-                     </div>
-                 </div>";
-                 $success = "false";
+                 $success = "falla_correo";
              } else {
                  // Validar si el cc ya existe
                  $sqlCheckCC = "SELECT COUNT(*) FROM usuarios WHERE cc = :cc";
@@ -72,18 +61,7 @@
                  $existeCC = $stmtCheckCC->fetchColumn();
      
                  if ($existeCC > 0) {
-                     echo "
-                     <div class=\"container mt-5\">
-                         <div class=\"row justify-content-center\">
-                             <div class=\"col md-8 col-lg-8\">
-                                 <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">
-                                     <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button>
-                                     <strong>Error en el registro: </strong>El número de cédula ya está registrado
-                                 </div>
-                             </div>
-                         </div>
-                     </div>";
-                     $success = "false";
+                     $success = "falla_cc";
                  } else {
                      // Si tanto el email como el cc no existen, insertamos el usuario
                      $nuevopassword = password_hash($password, PASSWORD_DEFAULT);
@@ -125,13 +103,51 @@
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
       <!-- Bootstrap CSS v5.2.1 -->
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
-   
-      
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+      <style>
+    body {
+      background: linear-gradient(to right, #4e54c8, #8f94fb);
+    }
+
+    .card{
+      padding: 15px;
+      border-radius: 16px;
+    }
+
+
+
+      </style>
    
    </head>
    <body>
       <header>
-         <!-- place navbar here -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light px-3">
+  <a href="https://xolit.com/en/rocking-your-business/" class="navbar-brand">
+    <img src="./img/logo-1.png" alt="logo" style="height: 25px;">
+  </a>
+
+  <!-- Botón colapsable para móviles -->
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Menú colapsable -->
+  <div class="collapse navbar-collapse" id="collapsibleNavId">
+    <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+      <!-- Aquí puedes agregar más elementos del menú -->
+    </ul>
+
+    <!-- Botón cerrar (siempre visible) -->
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item">
+        <a class="nav-link active text-danger fw-bold" href="cerrar.php">
+          <i class="fas fa-sign-out-alt"></i> Cerrar
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
       </header>
 
  
@@ -141,16 +157,31 @@
             <div class="row justify-content-center">
                <div class="col md-8 col-lg-8">
                   <!------------------ALERTA BOOTSTRAP-------------------------->
+                  <?php if (!empty($success) && $success == "falla_correo") {?>
+                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                     <strong>Error de registro: </strong>El correo ya se encuentra registrado
+                  </div>
+                  <?php } ?>
+
+                  <?php if (!empty($success) && $success == "falla_cc") {?>
+                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                     <strong>Error de registro: </strong>La Cedula ya se encuentra registrada
+                  </div>
+                  <?php } ?>
+
                   <?php if (!empty($success) && $success == "true") {?>
                   <div class="alert alert-success alert-dismissible fade show" role="alert">
                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                     <strong>Registro logrado con exito!</strong> Puede logearse ahora. En el siguiente enlace: <a href="login.html" class="btn btn-success">Login</a>
+                     <strong>Registro logrado con exito!</strong> Puede loguearse ahora. En el siguiente enlace: <a href="login.html" class="btn btn-success">Login</a>
                   </div>
                   <?php } ?>
                   <!------------------ALERTA BOOTSTRAP-------------------------->
                   <div class="card">
-                     <div class="card-header">Registro</div>
                      <div class="card-body">
+                        <h2>Registro de usuarios</h2>
+                        <br>
                         <form action="registro.php" method="post" id="formularioderegistro">
                            <div class="row mb-3">
                               <div class="col">
@@ -203,7 +234,6 @@
                            <a href="login.html" class="btn btn-primary">Login</a>
                         </form>
                      </div>
-                     <div class="card-footer text-muted"></div>
                   </div>
                </div>
             </div>
