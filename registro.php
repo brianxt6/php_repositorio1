@@ -1,4 +1,5 @@
 <?php
+
    if($_SERVER["REQUEST_METHOD"]=="POST"){
        include('conexion.php');
        $errores=array();
@@ -9,6 +10,7 @@
        $email=(isset($_POST['email']))? $_POST['email']:null;
        $password=(isset($_POST['password']))? $_POST['password']:null;
        $confirmarpassword=(isset($_POST['confirmarpassword']))? $_POST['confirmarpassword']:null;
+       $cc=(isset($_POST['cc']))? $_POST['cc']:null;
    
        if(empty($nombres)){
            $errores['nombres']="El campo nombres no puede estar vacio";
@@ -38,33 +40,77 @@
            echo "<br/>".$error."<br/>";
        }
    
-       if(empty($errores)){
-   
-       try{
-        
-           $pdo=new PDO('mysql:host='.$direccionservidor.'; dbname='.$baseDatos,$usuarioBD, $contraseniaBD);
-           $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-       
-           $nuevopassword=password_hash($password, PASSWORD_DEFAULT);
-   
-           $sql="INSERT INTO `usuarios` (`id`, `nombres`, `apellidos`, `email`, `password`, `rol`) VALUES (NULL,:nombres,:apellidos,:email,:password,1);";
-           $resultado=$pdo->prepare($sql);
-           $resultado->execute(array(
-               ':nombres' => $nombres,
-               ':apellidos' => $apellidos,
-               ':password' => $nuevopassword,
-               ':email' => $email,
-           ));
-           //header("Location:login.html");
-           $success="true";
-   
-       }catch(PDOExeption $e){
-           echo "Error".$e->getMessage();
-       }
-   }else{
-       echo "No se registraron los datos, pongase en contacto con el administrador";
-   }
-   
+       if (empty($errores)) {
+         try {
+             $pdo = new PDO('mysql:host=' . $direccionservidor . ';dbname=' . $baseDatos, $usuarioBD, $contraseniaBD);
+             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+     
+             // Validar si el email ya existe
+             $sqlCheckEmail = "SELECT COUNT(*) FROM usuarios WHERE email = :email";
+             $stmtCheckEmail = $pdo->prepare($sqlCheckEmail);
+             $stmtCheckEmail->execute([':email' => $email]);
+             $existeEmail = $stmtCheckEmail->fetchColumn();
+     
+             if ($existeEmail > 0) {
+                 echo "
+                 <div class=\"container mt-5\">
+                     <div class=\"row justify-content-center\">
+                         <div class=\"col md-8 col-lg-8\">
+                             <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">
+                                 <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button>
+                                 <strong>Error en el registro: </strong>El correo ya se encuentra registrado
+                             </div>
+                         </div>
+                     </div>
+                 </div>";
+                 $success = "false";
+             } else {
+                 // Validar si el cc ya existe
+                 $sqlCheckCC = "SELECT COUNT(*) FROM usuarios WHERE cc = :cc";
+                 $stmtCheckCC = $pdo->prepare($sqlCheckCC);
+                 $stmtCheckCC->execute([':cc' => $cc]);
+                 $existeCC = $stmtCheckCC->fetchColumn();
+     
+                 if ($existeCC > 0) {
+                     echo "
+                     <div class=\"container mt-5\">
+                         <div class=\"row justify-content-center\">
+                             <div class=\"col md-8 col-lg-8\">
+                                 <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">
+                                     <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button>
+                                     <strong>Error en el registro: </strong>El número de cédula ya está registrado
+                                 </div>
+                             </div>
+                         </div>
+                     </div>";
+                     $success = "false";
+                 } else {
+                     // Si tanto el email como el cc no existen, insertamos el usuario
+                     $nuevopassword = password_hash($password, PASSWORD_DEFAULT);
+     
+                 $sql = "INSERT INTO `usuarios` (`id`, `nombres`, `apellidos`, `email`, `password`, `rol`, `cc`) 
+                         VALUES (NULL, :nombres, :apellidos, :email, :password, 1, :cc);";
+     
+                 $resultado = $pdo->prepare($sql);
+                 $resultado->execute([
+                     ':nombres' => $nombres,
+                     ':apellidos' => $apellidos,
+                     ':password' => $nuevopassword,
+                     ':email' => $email,
+                     ':cc' => $cc,
+                 ]);
+     
+                 $success = "true";
+             }
+            }
+         } catch (PDOException $e) {
+             echo "Error: " . $e->getMessage();
+         }
+     } else {
+         echo "No se registraron los datos, póngase en contacto con el administrador.";
+     }
+     
+
    }
    
    //-----------------------------------------------------HTML------------------------------
@@ -87,12 +133,15 @@
       <header>
          <!-- place navbar here -->
       </header>
+
+ 
+
       <main>
          <div class="container mt-5">
             <div class="row justify-content-center">
                <div class="col md-8 col-lg-8">
                   <!------------------ALERTA BOOTSTRAP-------------------------->
-                  <?php if(isset($success)) {?>
+                  <?php if (!empty($success) && $success == "true") {?>
                   <div class="alert alert-success alert-dismissible fade show" role="alert">
                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                      <strong>Registro logrado con exito!</strong> Puede logearse ahora. En el siguiente enlace: <a href="login.html" class="btn btn-success">Login</a>
@@ -107,35 +156,49 @@
                               <div class="col">
                                  <div class="mb-3">
                                     <label for="" class="form-label">Nombres</label>
-                                    <input type="text" class="form-control" name="nombres" id="nombres" aria-describedby="helpId" placeholder="" />
+                                    <input type="text" class="form-control" name="nombres" id="nombres" aria-describedby="helpId" placeholder="" required/>
                                  </div>
                               </div>
                               <div class="col">
                                  <div class="mb-3">
                                     <label for="" class="form-label">Apellidos</label>
-                                    <input type="text" class="form-control" name="apellidos" id="apellidos" aria-describedby="helpId" placeholder="" />
+                                    <input type="text" class="form-control" name="apellidos" id="apellidos" aria-describedby="helpId" placeholder="" required/>
                                  </div>
                               </div>
                            </div>
+
+                              <div class="row">
+                                 <div class="col">
+
+                                 <div class="mb-3">
+                                    <label for="" class="form-label">CC</label>
+                                    <input type="number" class="form-control" name="cc" id="cc" aria-describedby="helpId" placeholder="" required/>
+                                 </div>
+                              </div>
+                              <div class="col">
+                              <div class="mb-3">
+                                 <label for="" class="form-label">Correo</label>
+                                 <input type="email" class="form-control" name="email" id="email" aria-describedby="helpId" placeholder="correo@grupotropi.com" required/>
+                              </div>
+                              </div>
+                           </div>
+
                            <div class="row">
                               <div class="col">
                                  <div class="mb-3">
                                     <label for="" class="form-label">Password</label>
-                                    <input type="password" class="form-control" name="password" id="password" aria-describedby="helpId" placeholder="" />
+                                    <input type="password" class="form-control" name="password" id="password" aria-describedby="helpId" placeholder="" required/>
                                  </div>
                               </div>
                               <div class="col">
                                  <div class="mb-3">
                                     <label for="" class="form-label">Repetir Password</label>
-                                    <input type="password" class="form-control" name="confirmarpassword" id="confirmarpassword" aria-describedby="helpId" placeholder="" />
+                                    <input type="password" class="form-control" name="confirmarpassword" id="confirmarpassword" aria-describedby="helpId" placeholder="" required/>
                                     <div class="invalid-feedback">Las constraseñas no coinciden</div>
                                  </div>
                               </div>
                            </div>
-                           <div class="mb-3">
-                              <label for="" class="form-label">Correo</label>
-                              <input type="email" class="form-control" name="email" id="email" aria-describedby="helpId" placeholder="correo@uc.edu.co" />
-                           </div>
+
                            <button type="submit" class="btn btn-success">Registrarme</button>
                            <a href="login.html" class="btn btn-primary">Login</a>
                         </form>

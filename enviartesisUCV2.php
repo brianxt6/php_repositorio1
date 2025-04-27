@@ -3,17 +3,20 @@ session_start(); // Asegúrate de que la sesión está iniciada
 
 if (!isset($_SESSION['usuario_id'])) {
     // Redirige al login si no hay sesión activa
-    header("Location: login.php");
+    header("Location: login.html");
     exit();
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include('conexion.php');
+
+    $plataforma = $_POST['plataforma'];
+    $name_usuario = $_POST['name_usuario'];
+
     $errores = array();
     $success = false;
-
     $titulo = $_POST['titulo'] ?? null;
-    $nota_usuario = $_POST['nota_usuario'] ?? null;
+    $nota_usuario = "<strong>Plataforma: </strong>" . $plataforma . "<strong> Usuario: </strong>" . $name_usuario . "<strong> Nota: </strong>". $_POST['nota_usuario'];
     $usuario_id = $_SESSION['usuario_id']; // Obtiene el ID del usuario actual
     
     date_default_timezone_set('America/Bogota');

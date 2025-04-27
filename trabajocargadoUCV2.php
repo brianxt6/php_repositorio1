@@ -136,7 +136,7 @@ try {
             <td><?= htmlspecialchars($trabajo['id_solicitud']) ?></td>
             <td><?= htmlspecialchars($trabajo['fecha']) ?></td>
             <td><?= htmlspecialchars($trabajo['titulo']) ?></td>
-            <td><?= htmlspecialchars($trabajo['nota_usuario']) ?></td>
+            <td><?= ($trabajo['nota_usuario']) ?></td>
 
             
             

@@ -131,7 +131,7 @@ try {
                             <td><?= htmlspecialchars($trabajo['fecha']) ?></td>
                             <td><?= htmlspecialchars($trabajo['nombre_usuario']) ?></td>
                             <td><?= htmlspecialchars($trabajo['titulo']) ?></td>
-                            <td><?= htmlspecialchars($trabajo['nota_usuario']) ?></td>
+                            <td><?= ($trabajo['nota_usuario']) ?></td>
                             <?php $deshabilitar = ($trabajo['estado_jefe'] != 'Pendiente') ? 'disabled' : ''; ?>
                             <td>
                                  <select name="estado_jefe" class="form-select" <?= $deshabilitar ?>

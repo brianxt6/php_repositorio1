@@ -1,3 +1,15 @@
+
+<?php
+session_start();
+if (!isset($_SESSION['usuario_id'])) {
+    header("Location: login.html");
+    exit();
+}
+
+
+?>
+
+
 <style>
 
 
@@ -119,7 +131,6 @@ footer{
       <!-- Aquí puedes agregar más elementos del menú -->
     </ul>
 
-    <!-- Botón cerrar (siempre visible) -->
     <ul class="navbar-nav ms-auto">
       <li class="nav-item">
         <a class="nav-link active text-danger fw-bold" href="cerrar.php">
@@ -134,25 +145,55 @@ footer{
 
    <div class="card-login">
    <h2>Solicitud de permisos</h2>
-   <br>
-    <p>Describa en los siguientes 2 campos la solicitud de permisos que desea realizar</p>
-    <p>Recuerde la correcta estructura del mensaje Ejemplo:</p>
-    <div class="alert alert-primary d-flex align-items-center" role="alert">
-  <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
-    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-  </svg>
-  <div>
-    Titulo: Plataforma [Pagina Tropi] <br>
-                       Usuario [pedro.perez] <br><br>
-    Detalles: Ruta: Pedidos/Productos/Autorizados
+<br>
+    <div class="accordion mb-3" id="accordionExample">
+    <div>
+    </h2>
+    </div>
+
+    <div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Ejemplo de como crear la solicitud.
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <strong>Titulo: </strong>Permisos área facturación <br>
+        <strong>Plataforma: </strong>Siesa <br>
+        <strong>Usuario: </strong>pedro.perez<br>
+        <strong>Detalles: </strong>Ruta: pedidos/cancelados<br>
+
+      </div>
+    </div>
   </div>
+
+</div>
+
+
 </div>
         <form action="enviartesisUCV2.php" method="POST" enctype="multipart/form-data" onsubmit="return confirmSubmit()">
 
 
+            <div class="input-group mb-3 mt-3">
+              <span class="input-group-text">Titulo:</span>
+              <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" name="titulo" id="titulo" required>
+            </div>
+
+            <div class="input-group mb-4">
+                <select class="form-select" aria-label="Default select example" name="plataforma" id="plataforma" required>
+                    <option value="" selected disabled>Plataforma</option>
+                    <option value="Siesa">Siesa</option>
+                    <option value="Pimovi">Pimovi</option>
+                    <option value="Pagina">Pagina Tropi</option>
+                    <option value="Inlog">Inlog</option>
+                </select>
+            </div>
+
             <div class="input-group mb-3">
-                <span class="input-group-text" style="height: 8rem;">Titulo      </span>
-                <textarea class="form-control" aria-label="With textarea" name="titulo" id="titulo" required></textarea>
+              <span class="input-group-text">Usuario:</span>
+              <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" name="name_usuario" id="name_usuario" required>
             </div>
 
             <div class="input-group mb-4">
@@ -180,6 +221,8 @@ footer{
     }
 </script>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+
    </div>
 
     </div>
@@ -187,7 +230,7 @@ footer{
 
  
 
-
+<br>
 
 </body>
 
