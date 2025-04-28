@@ -112,8 +112,12 @@
     .card{
       padding: 15px;
       border-radius: 16px;
+      background-color:rgb(255, 255, 255);
     }
 
+    input {
+    box-shadow: 0 0 3px rgb(60, 60, 196);
+}
 
 
       </style>
@@ -180,6 +184,7 @@
                   <!------------------ALERTA BOOTSTRAP-------------------------->
                   <div class="card">
                      <div class="card-body">
+                        
                         <h2>Registro de usuarios</h2>
                         <br>
                         <form action="registro.php" method="post" id="formularioderegistro">
@@ -227,7 +232,24 @@
                                     <input type="password" class="form-control" name="confirmarpassword" id="confirmarpassword" aria-describedby="helpId" placeholder="" required/>
                                     <div class="invalid-feedback">Las constraseñas no coinciden</div>
                                  </div>
+                                 <div>
+                                 </div>
                               </div>
+   
+                           </div>
+
+                           <div class="row">
+                              <div class="col">
+                              <div class="row">
+                           <div class="form-check m-3">
+                                 <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" required>
+                                 <label class="form-check-label" for="flexCheckDefault">
+                                    <strong>Al registrarse en nuestra plataforma, usted acepta la Política de Tratamiento de Datos de Xolit, la cual puede consultar en el enlace:  <a href="https://www.xolit.com/wp-content/uploads/2022/02/PL-GT-001_POLITICA-DE-PROTECCION-DE-DATOS-XOLIT.pdf" target="_blank">Link</a></strong>
+                                 </label>
+                                 </div>
+                           </div>
+                              </div>
+   
                            </div>
 
                            <button type="submit" class="btn btn-success">Registrarme</button>
