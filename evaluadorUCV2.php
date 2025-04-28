@@ -97,7 +97,7 @@ try {
 <br/>
 
 <div class="container">
-    <div class="card-login lign-items-center">
+    <div class="card-login">
         <div class="col">
             <h2>Bienvenido: <?php echo $_SESSION['usuario_nombres']; ?></h2>
             <p>Esta sección permite el aprobar los trabajos de grado del trabajo de grado</p>
@@ -106,7 +106,8 @@ try {
     </div>
 </div>
 
-<div class="card-login container mt-5">
+<div class="container mb-3">
+<div class="card-login mt-3">
     <h3>Solicitudes Creadas</h3>
     <div class="table-responsive mt-2">
         <table class="table">
@@ -212,7 +213,7 @@ try {
                  
 
 </div>
-
+</div>
 </main>
 </body>
 

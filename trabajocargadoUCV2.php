@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['usuario_id'])) {
-    header("Location: login.php");
+    header("Location: login.html");
     exit();
 }
 
@@ -60,7 +60,7 @@ try {
       border-radius: 16px;
       box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
       padding: 40px;
-      width: 100%;
+      width: 95%;
     }
 
       </style>
@@ -100,15 +100,17 @@ try {
 
 
 <div class="container mt-5">
+    <div class="card2">
     <h2>Bienvenido usuario: <?= htmlspecialchars($_SESSION['usuario_nombres']); ?></h2>
     <p>Esta sección permite el realizar solicitudes de permisos a las diferentes plataformas</p>
     <p>Su perfil es: <button class="btn btn-primary">Usuario Tropi</button></p>
     <a href="agregartesisUCV2.php" class="btn btn-info">Realizar Solicitud</a>
     <br>
+    </div>
 
 </div>
 
-<div class="container mt-5">
+<div class="container mt-5 mb-3">
     <h3>Solicitudes Creadas</h3>
     <div class="table-responsive mt-2">
         <table class="table">

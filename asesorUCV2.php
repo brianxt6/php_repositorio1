@@ -50,6 +50,7 @@ try {
       background: linear-gradient(to right, #4e54c8, #8f94fb);
     }
 
+    
     .card-login {
       background: #fff;
       border-radius: 16px;
@@ -106,7 +107,7 @@ try {
     </div>
 
 <br>
-<div class="card-login">
+<div class="card-login mb-3">
     <h3>Solicitudes de permisos</h3>
     <br>
     <div class="table-responsive mt-2">

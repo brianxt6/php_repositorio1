@@ -64,7 +64,7 @@ if(!isset($_SESSION['usuario_id'])){
 
       </header>
 
-<div class="container mt-5">
+<div class="container mt-3 mb-3">
     <div class="row justify-content-center">
         <div class="col md-8 col-lg-8">
     <div class="card">
@@ -81,21 +81,21 @@ if(!isset($_SESSION['usuario_id'])){
                 <hr class="my-4">
                 <!-- Correo Encontrado y Rol -->
 
-                <div class="row mt-3">
+                <div class="row">
                     <div class="col-md-6">
                         <label for="correoEncontrado" class="form-label">Nombre encontrado</label>
-                        <input type="text" class="form-control" id="correoEncontrado" placeholder="Nombre encontrado" readonly>
+                        <input type="text" class="form-control mb-3" id="correoEncontrado" placeholder="Nombre encontrado" readonly>
                     </div>
                     <div class="col-md-6">
                         <label for="correoEncontrado" class="form-label">Cedula encontrada</label>
-                        <input type="text" class="form-control" id="correoEncontrado" placeholder="Cedula encontrada" readonly>
+                        <input type="text" class="form-control mb-3" id="correoEncontrado" placeholder="Cedula encontrada" readonly>
                     </div>
                 </div>
 
-                <div class="row mt-3">
+                <div class="row">
                     <div class="col-md-6">
                         <label for="correoEncontrado" class="form-label">Correo encontrado</label>
-                        <input type="text" class="form-control" id="correoEncontrado" placeholder="Correo encontrado" readonly>
+                        <input type="text" class="form-control mb-3" id="correoEncontrado" placeholder="Correo encontrado" readonly>
                     </div>
                     <div class="col-md-6">
                         <label for="rol" class="form-label">Rol</label>
