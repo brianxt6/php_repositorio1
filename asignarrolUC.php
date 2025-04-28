@@ -5,6 +5,14 @@ if(!isset($_SESSION['usuario_id'])){
     exit();
 }
 
+include('conexion.php');
+
+    $nombre_encontrado="";
+    $cedula_encontrada="";
+
+    $sql = ""
+
+
 ?>
 
 <!DOCTYPE html>
@@ -80,18 +88,7 @@ if(!isset($_SESSION['usuario_id'])){
 
                 <hr class="my-4">
                 <!-- Correo Encontrado y Rol -->
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <label for="correoEncontrado" class="form-label">Nombre encontrado</label>
-                        <input type="text" class="form-control mb-3" id="correoEncontrado" placeholder="Nombre encontrado" readonly>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="correoEncontrado" class="form-label">Cedula encontrada</label>
-                        <input type="text" class="form-control mb-3" id="correoEncontrado" placeholder="Cedula encontrada" readonly>
-                    </div>
-                </div>
-
+                
                 <div class="row">
                     <div class="col-md-6">
                         <label for="correoEncontrado" class="form-label">Correo encontrado</label>
@@ -104,6 +101,17 @@ if(!isset($_SESSION['usuario_id'])){
                             <option value="3">Jefe</option>
                             <option value="4">Sistemas</option>
                         </select>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="correoEncontrado" class="form-label">Nombre encontrado</label>
+                        <input type="text" class="form-control mb-3" id="correoEncontrado" placeholder="Nombre encontrado" readonly>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="correoEncontrado" class="form-label">Cedula encontrada</label>
+                        <input type="text" class="form-control mb-3" id="correoEncontrado" placeholder="Cedula encontrada" readonly>
                     </div>
                 </div>
 

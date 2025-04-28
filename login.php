@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         break;
                     
                     case 5:
-                        header("Location: asignarrolUC.php");
+                        header("Location: asignarrolUCV2.php");
                         break;
 
                     default:
