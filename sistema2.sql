@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-04-2025 a las 07:06:55
+-- Tiempo de generación: 29-04-2025 a las 03:22:28
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.1.25
 
@@ -49,9 +49,6 @@ CREATE TABLE `resumen_solicitud` (
 --
 
 INSERT INTO `resumen_solicitud` (`id_solicitud`, `usuario_id`, `titulo`, `fecha`, `nota_usuario`, `nota_jefe`, `estado_jefe`, `nota_sistemas`, `estado_sistemas`, `aprobacion`, `asesor`, `nombre_usuario`, `evaluador`, `hora_solucion`) VALUES
-(25, 23, 'Permiso pagina Tropi\r\nusuarrio: brian.acevedo', '21/04/2025 09:38:38 PM', 'Ruta permisos/facturacion/escritura', 'Aprobado por cartera', 'Aprobado', 'Permisos asignados', 'Aprobado', 'Pendiente', '23', 'Brian Acevedo', '27', '21/04/2025 09:39:47 PM'),
-(26, 23, 'Permiso pimovi\r\nusuario: steven.ramirez', '21/04/2025 09:41:18 PM', 'Ruta pedidos/compras/aprobacion', 'Permisos solo para gerentes', 'Rechazado', 'Permisos solo para gerentes', 'Rechazado', 'Pendiente', '23', 'Brian Acevedo', '27', '21/04/2025 09:42:35 PM'),
-(27, 23, 'permisos siesa\r\nusuario: steven.ramirez', '21/04/2025 10:33:03 PM', 'ruta: pedidos/cancelados', 'Aprobado por gerencia', 'Aprobado', 'Sistemas 003', 'Aprobado', 'Pendiente', '23', 'Brian Acevedo', '27', '21/04/2025 11:13:35 PM'),
 (35, 23, 'Permisos area facturacion', '27/04/2025 09:49:29 AM', '<strong>Plataforma: </strong>Pimovi<strong> Usuario: </strong>brian.acevedo<strong> Nota: </strong>Ruta pedidos/aprobados', 'Aprobado por logistica', 'Aprobado', 'Permiso solo para gerentes', 'Rechazado', 'Pendiente', '23', 'Brian Acevedo', '27', '27/04/2025 09:52:41 AM');
 
 -- --------------------------------------------------------

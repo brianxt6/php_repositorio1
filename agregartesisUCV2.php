@@ -187,7 +187,7 @@ footer{
                     <option value="" selected disabled>Plataforma</option>
                     <option value="Siesa">Siesa</option>
                     <option value="Pimovi">Pimovi</option>
-                    <option value="Pagina">Pagina Tropi</option>
+                    <option value="Pagina_Tropi">Pagina_Tropi</option>
                     <option value="Inlog">Inlog</option>
                 </select>
             </div>
