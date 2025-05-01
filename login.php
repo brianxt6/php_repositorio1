@@ -46,9 +46,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         $hasTrabajo = $stmtCheck->fetchColumn();
 
                         if ($hasTrabajo > 0) {
-                            header("Location: trabajocargadoUCV2.php");
+                            header("Location: trabajocargadoucv2.php");
                         } else {
-                            header("Location: trabajocargadoUCV2.php");
+                            header("Location: trabajocargadoucv2.php");
                         }
                         break;
 
@@ -57,15 +57,15 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         break;
 
                     case 3:
-                        header("Location: asesorUCV2.php");
+                        header("Location: asesorucv2.php");
                         break;
 
                     case 4:
-                        header("Location: evaluadorUCV2.php");
+                        header("Location: evaluadorucv2.php");
                         break;
                     
                     case 5:
-                        header("Location: asignarrolUCV2.php");
+                        header("Location: asignarrolucv2.php");
                         break;
 
                     default:

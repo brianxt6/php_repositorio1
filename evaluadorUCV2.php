@@ -178,7 +178,7 @@ try {
 
             <td><?= htmlspecialchars($trabajo['nota_jefe'] ?: 'No asignado') ?>
 
-            <form method="POST" action="actualizar_estado_evaluadorV2.php">
+            <form method="POST" action="actualizar_estado_evaluadorv2.php">
 
         </td>
         <?php $deshabilitar = ($trabajo['estado_sistemas'] != 'Pendiente') ? 'disabled' : ''; ?>

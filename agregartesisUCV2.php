@@ -174,7 +174,7 @@ footer{
 
 
 </div>
-        <form action="enviartesisUCV2.php" method="POST" enctype="multipart/form-data" onsubmit="return confirmSubmit()">
+        <form action="enviartesisucv2.php" method="POST" enctype="multipart/form-data" onsubmit="return confirmSubmit()">
 
 
             <div class="input-group mb-3 mt-3">

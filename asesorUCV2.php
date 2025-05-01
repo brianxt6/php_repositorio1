@@ -127,7 +127,7 @@ try {
             <tbody>
                 <?php foreach ($trabajos as $trabajo): ?>
                     <tr>
-                        <form method="POST" action="actualizar_estado_asesorV2.php">
+                        <form method="POST" action="actualizar_estado_asesorv2.php">
                             <td><?= htmlspecialchars($trabajo['id_solicitud']) ?></td>
                             <td><?= htmlspecialchars($trabajo['fecha']) ?></td>
                             <td><?= htmlspecialchars($trabajo['nombre_usuario']) ?></td>
