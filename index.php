@@ -75,7 +75,11 @@ if(!isset($_SESSION['usuario_id'])){
             <div class="col">
             <h2>Bienvenido usuario:  <?php echo $_SESSION['usuario_nombres']; ?></h2>
 <p>Esta seccion permite el registro del trabajo de grado para aprobacion</p>
+<<<<<<< HEAD
             <a href="agregartesisuc.php" class="btn btn-primary">Cargar Informacion</a>
+=======
+            <a href="agregartesisUC.php" class="btn btn-primary">Cargar Informacion</a>
+>>>>>>> b1087344be7fe5700ee9a0d1217407c3c115c42e
         </div>
 
         <div

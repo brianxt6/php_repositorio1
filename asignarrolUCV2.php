@@ -114,11 +114,7 @@ document.getElementById("btnBuscar").addEventListener("click", function () {
         return;
     }
 
-<<<<<<< HEAD
-    fetch("buscarusuariov2.php", {
-=======
     fetch("buscarUsuarioV2.php", {
->>>>>>> b1087344be7fe5700ee9a0d1217407c3c115c42e
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: `cc=${cedula}`
@@ -146,11 +142,7 @@ document.getElementById("btnActualizar").addEventListener("click", function () {
         return;
     }
 
-<<<<<<< HEAD
-    fetch("actualizarusuariov2.php", {
-=======
     fetch("actualizarUsuarioV2.php", {
->>>>>>> b1087344be7fe5700ee9a0d1217407c3c115c42e
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: `cc=${cc}&rol=${rol}`

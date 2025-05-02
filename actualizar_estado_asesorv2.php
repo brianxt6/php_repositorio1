@@ -22,7 +22,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         ]);
 
         // Mostrar mensaje de éxito y redirigir
+<<<<<<< HEAD
         echo "<script>alert('Permiso actualizado exitosamente'); window.location.href = 'asesorucv2.php';</script>";
+=======
+        echo "<script>alert('Permiso actualizado exitosamente'); window.location.href = 'asesorUCV2.php';</script>";
+>>>>>>> b1087344be7fe5700ee9a0d1217407c3c115c42e
         
 
         

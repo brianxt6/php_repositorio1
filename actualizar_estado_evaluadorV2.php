@@ -103,11 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $mail->send();
 
-<<<<<<< HEAD
-            echo "<script>alert('Permiso actualizado y correo enviado exitosamente'); window.location.href = 'evaluadorucv2.php';</script>";
-=======
             echo "<script>alert('Permiso actualizado y correo enviado exitosamente'); window.location.href = 'evaluadorUCV2.php';</script>";
->>>>>>> b1087344be7fe5700ee9a0d1217407c3c115c42e
         } catch (Exception $e) {
             echo "Error al enviar el correo: {$mail->ErrorInfo}";
         }

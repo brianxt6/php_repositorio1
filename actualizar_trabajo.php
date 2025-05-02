@@ -14,7 +14,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt = $pdo->prepare($sql);
         $stmt->execute([':asesor' => $asesor, ':evaluador' => $evaluador, ':id_trabajo' => $id_trabajo]);
 
+<<<<<<< HEAD
         echo "<script>alert('Trabajo de grado actualizado exitosamente'); window.location.href = 'comiteuc.php';</script>";
+=======
+        echo "<script>alert('Trabajo de grado actualizado exitosamente'); window.location.href = 'ComiteUC.php';</script>";
+>>>>>>> b1087344be7fe5700ee9a0d1217407c3c115c42e
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }

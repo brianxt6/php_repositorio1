@@ -203,11 +203,7 @@ footer{
             </div>
 
             <div class="text">
-<<<<<<< HEAD
-                <a class="btn btn-info" href="trabajocargadoucv2.php" required>Volver pagina anterior</a>
-=======
                 <a class="btn btn-info" href="trabajocargadoUCV2.php" required>Volver pagina anterior</a>
->>>>>>> b1087344be7fe5700ee9a0d1217407c3c115c42e
                 <a href=""></a>
                 <button type="submit" class="btn btn-primary">Enviar Formulario</button>
             </div>
